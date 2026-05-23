@@ -5,10 +5,10 @@ import { AppError, asyncHandler } from "../middleware/error.js";
 const MAX_FILE_SIZE = 500 * 1024;
 
 const getProjects = asyncHandler(async (req, res) => {
-  const project = await Project.find({ owner: req.user.userId })
+  const projects = await Project.find({ owner: req.user.userId })
     .select("-files")
     .sort({ createdAt: -1 });
-  ok(res, "Projects fetched", { project });
+  ok(res, "Projects fetched", { projects });
 });
 
 const getProjectById = asyncHandler(async (req, res) => {

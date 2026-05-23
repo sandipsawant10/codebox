@@ -26,6 +26,12 @@ const projectSchema = new mongoose.Schema(
     },
     description: {
       type: String,
+      trim: true,
+      maxlength: [300, "Description too long"],
+      default: "",
+    },
+    template: {
+      type: String,
       enum: ["vanilla", "react", "html"],
       default: "react",
     },
@@ -39,12 +45,8 @@ const projectSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    isPublic: {
-      type: Boolean,
-      default: false,
-    },
   },
-  { timeseries: true },
+  { timestamps: true },
 );
 
 projectSchema.index({ owner: 1, updatedAt: -1 });

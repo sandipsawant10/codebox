@@ -8,7 +8,7 @@ export const authApi = {
 
 export const projectsApi = {
   getAll: () => api.get("/projects").then((r) => r.data),
-  getById: (id) => api.get(`/project/${id}`).then((r) => r.data),
+  getById: (id) => api.get(`/projects/${id}`).then((r) => r.data),
   create: (p) => api.post("/projects", p).then((r) => r.data),
   update: (id, p) => api.put(`/projects/${id}`, p).then((r) => r.data),
   delete: (id) => api.delete(`/projects/${id}`).then((r) => r.data),

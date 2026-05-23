@@ -25,6 +25,16 @@ export const useSandboxStore = create((set, get) => ({
     });
   },
 
+  setActiveFile: (path) => {
+    const { files, openTabs } = get();
+    if (path && files[path] !== undefined && !openTabs.includes(path)) {
+      set({ activeFile: path, openTabs: [...openTabs, path] });
+      return;
+    }
+
+    set({ activeFile: path });
+  },
+
   closeTab: (path) => {
     const { openTabs, activeFile } = get();
     const newTabs = openTabs.filter((t) => t !== path);

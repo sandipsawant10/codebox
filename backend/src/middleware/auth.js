@@ -2,7 +2,7 @@ import { verifyToken } from "../utils/jwt.js";
 import { fail } from "../utils/response.js";
 
 const protect = (req, res, next) => {
-  const header = req.header.authorization;
+  const header = req.headers.authorization;
   if (!header?.startsWith("Bearer ")) return fail(res, "Unauthorized", 401);
 
   try {
